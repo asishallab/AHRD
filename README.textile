@@ -56,7 +56,7 @@ Copy (clone) AHRD to your computer using git via command-line, then change into 
 cd AHRD
 git checkout tags/v3.4.1</pre>
 
-Alternativelly without using @git@, you can download AHRD version @v3.4@ ("zip":https://github.com/groupschoof/AHRD/archive/v3.4.zip or "tar.gz":https://github.com/groupschoof/AHRD/archive/v3.4.tar.gz) and extract it.
+Alternativelly without using @git@, you can download AHRD version @v3.4.1@ ("zip":https://github.com/asishallab/AHRD/archive/v3.4.1.zip or "tar.gz":https://github.com/asishallab/AHRD/archive/v3.4.1.tar.gz) and extract it.
 
 h4. 1.2.2 Build the executable jar
 
