@@ -93,10 +93,10 @@ _Do not worry_: You do not have to take care of or setup AHRD's database - it do
 If you want or need to, you can _just_ setup an AHRD-Database without running the analysis. In order to do so use the following command:
 
 <pre>
-java -Xmx20g -cp ./dist/ahrd.jar ahrd.controller.DatabaseSetup ./ahrd_example_database_setup_input.yml
+java -Xmx20g -cp ./dist/ahrd.jar ahrd.controller.DatabaseSetup ./ahrd_example_input.yml
 </pre>
 
-See file @ahrd_example_database_setup_input.yml@ for more details.
+Note that basically you need to provide the @ahrd.controller.DatabaseSetup@ with its standard input, most of which will be ignored during the creation of the AHRD database. Depending on whether you want AHRD to be able to predict Gene Ontology term annotations along with human readable descriptions you should use the @ahrd_example_input_go_prediction.yml@ template, otherwise use @ahrd_example_input.yml@. 
 
 h3. 2.2 Input
 
