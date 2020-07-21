@@ -38,3 +38,4 @@ trainer_batch_ymls
 .project
 /classes/
 AHRD_DB
+.classpath
