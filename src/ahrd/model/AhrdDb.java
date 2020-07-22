@@ -54,13 +54,12 @@ public class AhrdDb {
 	 */
 
 	/**
-	 * Initializes and creates, if necessary, the Database. Stores the Database
-	 * and the Environment in a thread-local variable.
+	 * Initializes and creates, if necessary, the Database. Stores the Database and
+	 * the Environment in a thread-local variable.
 	 * 
-	 * @param readonly
-	 *            Set to true if and only if pure read-access is wanted. This
-	 *            should be the case if AHRD is run after Database-Setup has
-	 *            been executed.
+	 * @param readonly Set to true if and only if pure read-access is wanted. This
+	 *                 should be the case if AHRD is run after Database-Setup has
+	 *                 been executed.
 	 * @throws DatabaseException
 	 * @throws IOException
 	 */
@@ -70,7 +69,9 @@ public class AhrdDb {
 		envConfig.setAllowCreate(!readonly);
 		envConfig.setReadOnly(readonly);
 		envConfig.setCachePercent(getSettings().getAhrdDbCachePercent());
-		envConfig.setConfigParam("je.log.fileMax", "1073741824");
+		// This is the apparent minimum cache size required (98.304 Kilobyte):
+		// envConfig.setCacheSize(98304);
+		envConfig.setConfigParam("je.log.fileMax", "1000000000");
 		File ahrdDbFile = new File(getSettings().getAhrd_db());
 		if (!ahrdDbFile.exists())
 			ahrdDbFile.mkdirs();
@@ -102,8 +103,7 @@ public class AhrdDb {
 	}
 
 	/**
-	 * Closes all connections to the database and deletes it from the file
-	 * system.
+	 * Closes all connections to the database and deletes it from the file system.
 	 * 
 	 * @throws IOException
 	 */

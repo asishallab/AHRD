@@ -139,15 +139,15 @@ public class Settings implements Cloneable {
 	 */
 	private String pathToSimulatedAnnealingPathLog;
 	/**
-	 * Parameters representing weights and factors in the various formulas used
-	 * in AHRD. They are subject to optimization and can be set by the user.
+	 * Parameters representing weights and factors in the various formulas used in
+	 * AHRD. They are subject to optimization and can be set by the user.
 	 */
 	private Parameters parameters = new Parameters();
 	private Boolean writeTokenSetToOutput;
 	private Boolean writeBestBlastHitsToOutput;
 	/**
-	 * Forces AHRD to write out all internal scores (Sum(Token-Scores),
-	 * Description- and Lexical-Scores, etc.
+	 * Forces AHRD to write out all internal scores (Sum(Token-Scores), Description-
+	 * and Lexical-Scores, etc.
 	 */
 	private Boolean writeScoresToOutput;
 	/**
@@ -161,49 +161,49 @@ public class Settings implements Cloneable {
 	private Map<String, List<String>> tokenBlacklists = new HashMap<String, List<String>>();
 	private String pathToBlast2GoAnnotations;
 	/**
-	 * For the <strong>simulated annealing</strong> algorithm, this will be
-	 * current temperature. (Default is 75000)
+	 * For the <strong>simulated annealing</strong> algorithm, this will be current
+	 * temperature. (Default is 75000)
 	 */
 	private Integer temperature = 75000;
 	/**
-	 * For the <strong>simulated annealing</strong> algorithm, this will be
-	 * value the current temperature gets cooled down each step. (Default is 1)
+	 * For the <strong>simulated annealing</strong> algorithm, this will be value
+	 * the current temperature gets cooled down each step. (Default is 1)
 	 */
 	private Integer coolDownBy = 1;
 	/**
-	 * For the <strong>simulated annealing</strong> algorithm, this is the
-	 * scaling factor for the probability distribution P('Accept worse scoring
+	 * For the <strong>simulated annealing</strong> algorithm, this is the scaling
+	 * factor for the probability distribution P('Accept worse scoring
 	 * Parameter-Set') := exp(-delta_scores*scaling_factor/current-temperature).
 	 */
 	private Double optimizationAcceptanceProbabilityScalingFactor = 2500000000.0;
 	/**
 	 * In simulated annealing optimization each cycle has to mutate the current
-	 * Parameter-Set to generate a neighboring set in parameter space. The
-	 * random value used to add or subtract to a single parameter is Gaussian
-	 * distributed and has the following mean:
+	 * Parameter-Set to generate a neighboring set in parameter space. The random
+	 * value used to add or subtract to a single parameter is Gaussian distributed
+	 * and has the following mean:
 	 */
 	private Double mutatorMean = 0.25;
 	/**
 	 * In simulated annealing optimization each cycle has to mutate the current
-	 * Parameter-Set to generate a neighboring set in parameter space. The
-	 * random value used to add or subtract to a single parameter is Gaussian
-	 * distributed and has the following standard deviation:
+	 * Parameter-Set to generate a neighboring set in parameter space. The random
+	 * value used to add or subtract to a single parameter is Gaussian distributed
+	 * and has the following standard deviation:
 	 */
 	private Double mutatorDeviation = 0.15;
 	/**
 	 * If the last optimization step was done with better performing parameters,
-	 * randomly decide to mutate the same Parameter to generate a new Neighbor
-	 * in Parameter-Space. By this simulated annealing walks more likely uphill
-	 * in Parameter-Score-Space. The probability P('Mutate same Parameter') :=
-	 * 0, if score was not increased, (exp(1-increase.score)+s)/(exp(0)+s) else
+	 * randomly decide to mutate the same Parameter to generate a new Neighbor in
+	 * Parameter-Space. By this simulated annealing walks more likely uphill in
+	 * Parameter-Score-Space. The probability P('Mutate same Parameter') := 0, if
+	 * score was not increased, (exp(1-increase.score)+s)/(exp(0)+s) else
 	 * 
 	 * This is the scaling parameter s in above formula.
 	 */
 	private Double pMutateSameParameterScale = 0.7;
 	/**
-	 * Break with the classic simulated annealing approach and remember each
-	 * visited Parameter-Set and its score. This enables speeding up the
-	 * optimization with the drawback of higher memory usage.
+	 * Break with the classic simulated annealing approach and remember each visited
+	 * Parameter-Set and its score. This enables speeding up the optimization with
+	 * the drawback of higher memory usage.
 	 */
 	private boolean rememberSimulatedAnnealingPath = false;
 	/**
@@ -216,9 +216,8 @@ public class Settings implements Cloneable {
 	 */
 	private boolean outputFasta = false;
 	/**
-	 * The following fields control how the result table of a sequence
-	 * similarity search is parsed. All concerned fields start with
-	 * 'seqSimSearchTable'.
+	 * The following fields control how the result table of a sequence similarity
+	 * search is parsed. All concerned fields start with 'seqSimSearchTable'.
 	 */
 	private Pattern seqSimSearchTableCommentLineRegex = null;
 	private String seqSimSearchTableSep = "\t";
@@ -238,8 +237,8 @@ public class Settings implements Cloneable {
 	 */
 	private Boolean preferReferenceWithGoAnnos = false;
 	/**
-	 * If set to TRUE the AHRD Evaluation Score is based ONLY on tokens that
-	 * pass the Blacklisting. Otherwise all Tokens are submitted to evaluation.
+	 * If set to TRUE the AHRD Evaluation Score is based ONLY on tokens that pass
+	 * the Blacklisting. Otherwise all Tokens are submitted to evaluation.
 	 */
 	private Boolean evaluateValidTokens = true;
 
@@ -249,9 +248,10 @@ public class Settings implements Cloneable {
 	private String ahrd_db = "AHRD_DB";
 	/**
 	 * The percent of the max memory available in the current JVM to be used for
-	 * caching AHRD's database.
+	 * caching AHRD's database. Keep it low, because AHRD by tendency has a large
+	 * database where records are read at most once per AHRD-run.
 	 */
-	private int ahrdDbCachePercent = 90;
+	private int ahrdDbCachePercent = 1;
 
 	/**
 	 * Construct from contents of file 'AHRD_input.yml'.
@@ -406,11 +406,11 @@ public class Settings implements Cloneable {
 	}
 
 	/**
-	 * Returns a clone of this instance. <strong>Only</strong> all primitive
-	 * fields and the Blast-Database-Parameters are actually cloned. All other
-	 * fields still refer to <strong>the same objects</strong>. <em>So be very
-	 * careful using this method.</em> It has been written in this manner to
-	 * fulfill requirements and minimize memory-usage.
+	 * Returns a clone of this instance. <strong>Only</strong> all primitive fields
+	 * and the Blast-Database-Parameters are actually cloned. All other fields still
+	 * refer to <strong>the same objects</strong>. <em>So be very careful using this
+	 * method.</em> It has been written in this manner to fulfill requirements and
+	 * minimize memory-usage.
 	 */
 	public Settings clone() {
 		Settings clone;
@@ -445,9 +445,9 @@ public class Settings implements Cloneable {
 	}
 
 	/**
-	 * Break with the classic simulated annealing approach and remember each
-	 * visited Parameter-Set and its score. This enables speeding up the
-	 * optimization with the drawback of higher memory usage.
+	 * Break with the classic simulated annealing approach and remember each visited
+	 * Parameter-Set and its score. This enables speeding up the optimization with
+	 * the drawback of higher memory usage.
 	 * 
 	 * @return boolean - flag
 	 */
