@@ -70,7 +70,7 @@ public class ProteinTest {
 		assertEquals(
 				"Constructed protein should have it's Accession correctly set",
 				"MySequence", prot.getAccession());
-		assertEquals(((new Integer(sequence.length())).longValue()),
+		assertEquals(((Integer.valueOf(sequence.length())).longValue()),
 				(prot.getSequenceLength().longValue()));
 		// In order to save memory, when not writing output in fasta-format,
 		// ensure the AA-sequences are not held in memory:
@@ -103,7 +103,7 @@ public class ProteinTest {
 		assertEquals(
 				"Constructed protein should have it's Accession correctly set",
 				"MySequence", prot.getAccession());
-		assertEquals(((new Integer(sequence.length())).longValue()),
+		assertEquals(((Integer.valueOf(sequence.length())).longValue()),
 				(prot.getSequenceLength().longValue()));
 		assertNotNull("Protein should have its AA-sequence set.",
 				prot.getSequence());

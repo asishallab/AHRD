@@ -1,7 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
 <project name="AHRD" default="test" basedir=".">
 	<description>
-    Assign Human Readable Description (AHRD)
-  </description>
+      Assign Human Readable Description (AHRD)
+    </description>
 	<!-- set global properties for this build -->
 	<property name="src" location="src" />
 	<property name="classes" location="classes" />

@@ -401,7 +401,7 @@ public class Settings implements Cloneable {
 			this.setAhrd_db(input.get(AHRD_DATABASE_KEY).toString());
 		}
 		if (input.get(AHRD_DB_CACHE_PERCENT_KEY) != null) {
-			this.setAhrdDbCachePercent(new Integer(input.get(AHRD_DB_CACHE_PERCENT_KEY).toString()));
+			this.setAhrdDbCachePercent(Integer.valueOf(input.get(AHRD_DB_CACHE_PERCENT_KEY).toString()));
 		}
 	}
 

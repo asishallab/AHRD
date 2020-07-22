@@ -169,14 +169,14 @@ public class TrainerBatcher extends Batcher {
 				Settings.WRITE_BEST_BLAST_HITS_TO_OUTPUT);
 
 		if (appendBestBlastHitsToOutput != null
-				&& new Boolean(appendBestBlastHitsToOutput))
+				&& Boolean.parseBoolean(appendBestBlastHitsToOutput))
 			batchYml.put(Settings.WRITE_BEST_BLAST_HITS_TO_OUTPUT, true);
 
 		// Append the set of Tokens?
 		String appendTokenSet = (String) getInput().get(
 				Settings.WRITE_TOKEN_SET_TO_OUTPUT);
 
-		if (appendTokenSet != null && new Boolean(appendTokenSet)) {
+		if (appendTokenSet != null && Boolean.parseBoolean(appendTokenSet)) {
 			batchYml.put(Settings.WRITE_TOKEN_SET_TO_OUTPUT, true);
 		}
 
@@ -184,7 +184,7 @@ public class TrainerBatcher extends Batcher {
 		String appendDescScores = (String) getInput().get(
 				Settings.WRITE_SCORES_TO_OUTPUT);
 
-		if (appendDescScores != null && new Boolean(appendDescScores)) {
+		if (appendDescScores != null && Boolean.parseBoolean(appendDescScores)) {
 			batchYml.put(Settings.WRITE_SCORES_TO_OUTPUT, true);
 		}
 

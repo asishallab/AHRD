@@ -106,7 +106,7 @@ public class TrainerTest {
 	public void testAcceptanceProbability() {
 		getSettings().setAvgEvaluationScore(0.5);
 		getSettings().setOptimizationAcceptanceProbabilityScalingFactor(
-				new Double(200000000));
+				Double.valueOf(200000000));
 		getSettings().setTemperature(1000);
 		// test first iteration, when accepted Settings are null:
 		assertEquals(1.0, trainer.acceptanceProbability(), 0.0);
@@ -150,11 +150,11 @@ public class TrainerTest {
 
 	@Test
 	public void testCoolDown() {
-		Integer t = new Integer(getSettings().getTemperature());
+		Integer t = Integer.valueOf(getSettings().getTemperature());
 		trainer.coolDown();
 		assertEquals("After cooling down the current temperature should be "
 				+ getSettings().getCoolDownBy() + " degrees less than " + t,
-				new Integer(t - getSettings().getCoolDownBy()), getSettings()
+				Integer.valueOf(t - getSettings().getCoolDownBy()), getSettings()
 						.getTemperature());
 	}
 
@@ -184,7 +184,7 @@ public class TrainerTest {
 		// P('Accept worse performing Settings') is higher for high Temperatures
 		getSettings().setTemperature(10000);
 		getSettings().setOptimizationAcceptanceProbabilityScalingFactor(
-				new Double(1500000));
+				Double.valueOf(1500000));
 		Set<Integer> as = new HashSet<Integer>();
 		for (int i = 0; i < 50; i++) {
 			this.trainer.getAcceptedParameters().setAvgEvaluationScore(0.75);
@@ -207,7 +207,7 @@ public class TrainerTest {
 				+ "B(0|p=0.5,n=50) < 0.0000000000000009";
 		assertTrue(
 				"A worse parameter set should have never be accpeted with probability 1.0, which is only applied to better performing parameter-sets",
-				!as.contains(3.0) && !as.contains(2.0));
+				!as.contains(3) && !as.contains(2));
 		// 50 iterations should have accepted or rejected at least once
 		assertTrue(
 				"50 iterations should have accepted worse performing settings least once. - "

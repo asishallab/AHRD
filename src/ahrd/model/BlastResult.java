@@ -406,9 +406,9 @@ public class BlastResult implements Comparable<BlastResult> {
 	 *         descriptionScore, tokens and evaluationScore.
 	 */
 	public BlastResult clone() {
-		return new BlastResult(new String(this.getAccession()), new Double(eValue), new String(description),
-				new Integer(queryStart), new Integer(queryEnd), new Integer(subjectStart), new Integer(subjectEnd),
-				new Integer(subjectLength), new Double(bitScore), new String(blastDatabaseName));
+		return new BlastResult(new String(this.getAccession()), Double.valueOf(eValue), new String(description),
+				Integer.valueOf(queryStart), Integer.valueOf(queryEnd), Integer.valueOf(subjectStart), Integer.valueOf(subjectEnd),
+				Integer.valueOf(subjectLength), Double.valueOf(bitScore), new String(blastDatabaseName));
 	}
 
 	/**

@@ -213,7 +213,7 @@ public class Trainer extends Evaluator {
 			}
 		}
 		// average each number:
-		Double numberOfProts = new Double(getProteins().size());
+		Double numberOfProts = Double.valueOf(getProteins().size());
 		if (avgEvlScr > 0.0)
 			avgEvlScr = avgEvlScr / numberOfProts;
 		if (avgTruePosRate > 0.0)

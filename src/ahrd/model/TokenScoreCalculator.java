@@ -112,7 +112,7 @@ public class TokenScoreCalculator {
 				for (String token : iterResult.getTokens()) {
 					if (!(getTokenScores().containsKey(token))) {
 						double tokenscore = tokenScore(token, iterBlastDb);
-						getTokenScores().put(token, new Double(tokenscore));
+						getTokenScores().put(token, Double.valueOf(tokenscore));
 						// remember highest token score
 						if (tokenscore > getTokenHighScore()) {
 							setTokenHighScore(tokenscore);
@@ -131,7 +131,7 @@ public class TokenScoreCalculator {
 	public void filterTokenScores() {
 		for (String token : getTokenScores().keySet()) {
 			if (!isInformativeToken(token)) {
-				getTokenScores().put(token, new Double(getTokenScores().get(token) - getTokenHighScore() / 2));
+				getTokenScores().put(token, Double.valueOf(getTokenScores().get(token) - getTokenHighScore() / 2));
 			}
 		}
 	}
@@ -204,26 +204,26 @@ public class TokenScoreCalculator {
 
 	public void addCumulativeTokenBitScore(String token, double bitScore) {
 		if (!getCumulativeTokenBitScores().containsKey(token))
-			getCumulativeTokenBitScores().put(token, new Double(bitScore));
+			getCumulativeTokenBitScores().put(token, Double.valueOf(bitScore));
 		else
-			getCumulativeTokenBitScores().put(token, new Double(bitScore + getCumulativeTokenBitScores().get(token)));
+			getCumulativeTokenBitScores().put(token, Double.valueOf(bitScore + getCumulativeTokenBitScores().get(token)));
 	}
 
 	public void addCumulativeTokenOverlapScore(String token, double overlapScore) {
 		if (!getCumulativeTokenOverlapScores().containsKey(token))
-			getCumulativeTokenOverlapScores().put(token, new Double(overlapScore));
+			getCumulativeTokenOverlapScores().put(token, Double.valueOf(overlapScore));
 		else
 			getCumulativeTokenOverlapScores().put(token,
-					new Double(overlapScore + getCumulativeTokenOverlapScores().get(token)));
+					Double.valueOf(overlapScore + getCumulativeTokenOverlapScores().get(token)));
 	}
 
 	public void addCumulativeTokenBlastDatabaseScore(String token, String blastDatabaseName) {
 		Integer blastDatabaseWeight = getSettings().getBlastDbWeight(blastDatabaseName);
 		if (!getCumulativeTokenBlastDatabaseScores().containsKey(token))
-			getCumulativeTokenBlastDatabaseScores().put(token, new Double(blastDatabaseWeight));
+			getCumulativeTokenBlastDatabaseScores().put(token, Double.valueOf(blastDatabaseWeight));
 		else
 			getCumulativeTokenBlastDatabaseScores().put(token,
-					new Double(blastDatabaseWeight + getCumulativeTokenBlastDatabaseScores().get(token)));
+					Double.valueOf(blastDatabaseWeight + getCumulativeTokenBlastDatabaseScores().get(token)));
 	}
 
 	public double sumOfAllTokenScores(BlastResult blastResult) {

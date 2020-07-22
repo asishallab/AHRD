@@ -29,7 +29,7 @@ public class LexicalScoreCalculator {
 			if (tsc.isInformativeToken(token))
 				noInformativeTokens += 1.0;
 		}
-		return (new Double(br.getTokens().size()).doubleValue() / noInformativeTokens);
+		return (Double.valueOf(br.getTokens().size()).doubleValue() / noInformativeTokens);
 	}
 
 	public Protein getProtein() {

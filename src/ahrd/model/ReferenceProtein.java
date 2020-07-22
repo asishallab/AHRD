@@ -69,7 +69,7 @@ public class ReferenceProtein {
 			fastaIn = new BufferedReader(new FileReader(getSettings().getPathToBlastDatabase(blastDbName)));
 			String str, hrd = new String();
 			String acc = "";
-			Integer hitAALength = new Integer(0);
+			Integer hitAALength = Integer.valueOf(0);
 			boolean hit = false;
 			while ((str = fastaIn.readLine()) != null) {
 				if (str.startsWith(">")) {
@@ -78,7 +78,7 @@ public class ReferenceProtein {
 					if (hit) {
 						put(new ReferenceProtein(acc, hrd, hitAALength, blastDbName));
 						// Clean up to enable processing the next Hit
-						hitAALength = new Integer(0);
+						hitAALength = Integer.valueOf(0);
 						// Note, that the boolean 'hit' will be set in the
 						// following If-Else-Block.
 					}

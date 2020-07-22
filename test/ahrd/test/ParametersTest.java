@@ -73,7 +73,7 @@ public class ParametersTest {
 		Map<String, Integer> origDbWeights = new HashMap<String, Integer>();
 		for (String blastDB : p.getBlastDatabases()) {
 			origDbWeights
-					.put(blastDB, new Integer(p.getBlastDbWeight(blastDB)));
+					.put(blastDB, Integer.valueOf(p.getBlastDbWeight(blastDB)));
 		}
 		// test:
 		for (String blastDB : p.getBlastDatabases()) {
@@ -110,7 +110,7 @@ public class ParametersTest {
 		Map<String, Double> origDsBsWs = new HashMap<String, Double>();
 		for (String blastDB : p.getBlastDatabases()) {
 			origDsBsWs.put(blastDB,
-					new Double(p.getDescriptionScoreBitScoreWeight(blastDB)));
+					Double.valueOf(p.getDescriptionScoreBitScoreWeight(blastDB)));
 		}
 		// test:
 		for (String blastDB : p.getBlastDatabases()) {
@@ -126,9 +126,9 @@ public class ParametersTest {
 	@Test
 	public void testMutateTokenScoreBitScoreWeight() {
 		Parameters p = getSettings().getParameters();
-		Double dbsw = new Double(p.getTokenScoreDatabaseScoreWeight());
-		Double osw = new Double(p.getTokenScoreOverlapScoreWeight());
-		Double bsw = new Double(p.getTokenScoreBitScoreWeight());
+		Double dbsw = Double.valueOf(p.getTokenScoreDatabaseScoreWeight());
+		Double osw = Double.valueOf(p.getTokenScoreOverlapScoreWeight());
+		Double bsw = Double.valueOf(p.getTokenScoreBitScoreWeight());
 		// test:
 		p.mutateTokenScoreBitScoreWeight();
 		assertEquals(
@@ -146,9 +146,9 @@ public class ParametersTest {
 	@Test
 	public void testMutateTokenScoreOverlapScoreWeight() {
 		Parameters p = getSettings().getParameters();
-		Double dbsw = new Double(p.getTokenScoreDatabaseScoreWeight());
-		Double osw = new Double(p.getTokenScoreOverlapScoreWeight());
-		Double bsw = new Double(p.getTokenScoreBitScoreWeight());
+		Double dbsw = Double.valueOf(p.getTokenScoreDatabaseScoreWeight());
+		Double osw = Double.valueOf(p.getTokenScoreOverlapScoreWeight());
+		Double bsw = Double.valueOf(p.getTokenScoreBitScoreWeight());
 		// test:
 		p.mutateTokenScoreOverlapScoreWeight();
 		assertEquals(
@@ -166,9 +166,9 @@ public class ParametersTest {
 	@Test
 	public void testMutateTokenScoreDatabaseScoreWeight() {
 		Parameters p = getSettings().getParameters();
-		Double dbsw = new Double(p.getTokenScoreDatabaseScoreWeight());
-		Double osw = new Double(p.getTokenScoreOverlapScoreWeight());
-		Double bsw = new Double(p.getTokenScoreBitScoreWeight());
+		Double dbsw = Double.valueOf(p.getTokenScoreDatabaseScoreWeight());
+		Double osw = Double.valueOf(p.getTokenScoreOverlapScoreWeight());
+		Double bsw = Double.valueOf(p.getTokenScoreBitScoreWeight());
 		// test:
 		p.mutateTokenScoreDatabaseScoreWeight();
 		assertEquals(
@@ -218,7 +218,7 @@ public class ParametersTest {
 			Parameters n2 = n.neighbour(1.0);
 			assertEquals(
 					"The neighbor must remember which Parameter has been mutated to evolve him from its parent.",
-					new Integer(paramInd), n2.getLastMutatedParameter());
+					Integer.valueOf(paramInd), n2.getLastMutatedParameter());
 			if (paramInd == 0)
 				assertTrue(
 						"TokenScoreBitScoreWeight should have been mutated.",
@@ -236,7 +236,7 @@ public class ParametersTest {
 								n2.getTokenScoreOverlapScoreWeight()));
 			else if (paramInd > 2) {
 				String blastDbName = getSettings().getSortedBlastDatabases()
-						.get((new Double(Math.floor((paramInd - 3) / 2.0)))
+						.get((Double.valueOf(Math.floor((paramInd - 3) / 2.0)))
 								.intValue());
 				boolean mutatedBlastDbWeight = ! (paramInd % 2 == 0);
 				if (mutatedBlastDbWeight)

@@ -154,7 +154,7 @@ public class Parameters implements Cloneable {
 		} else {
 			// Mutate a Parameter associated with a Blast-Database:
 			int indOfBlastDbToMutate = randParamToMutate - 3;
-			int blastDbIndex = (new Double(
+			int blastDbIndex = (Double.valueOf(
 					Math.floor(indOfBlastDbToMutate / 2.0))).intValue();
 			String blastDbToMutate = getSettings().getSortedBlastDatabases()
 					.get(blastDbIndex);
@@ -299,7 +299,7 @@ public class Parameters implements Cloneable {
 	 *         mutate.
 	 */
 	public Long mutateBlastDatabaseWeightBy() {
-		return new Double(Math.ceil(100.0 * mutatePercentageBy())).longValue();
+		return Double.valueOf(Math.ceil(100.0 * mutatePercentageBy())).longValue();
 	}
 
 	/**
