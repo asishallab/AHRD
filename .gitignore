@@ -39,3 +39,4 @@ trainer_batch_ymls
 /classes/
 AHRD_DB
 .classpath
+/.apt_generated/

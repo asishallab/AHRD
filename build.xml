@@ -45,7 +45,7 @@
 	</target>
 
 	<target name="compile.test" depends="compile" description="compile the test-classes">
-		<javac srcdir="${src.test}" destdir="${classes}" includeAntRuntime="yes" nowarn="off">
+		<javac srcdir="${src.test}" destdir="${classes}" debug="true" includeAntRuntime="yes" nowarn="off">
 			<compilerarg value="-Xlint:unchecked" />
 			<classpath refid="classpath.test" />
 		</javac>
